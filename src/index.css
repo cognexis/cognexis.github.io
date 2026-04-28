@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-blueprint-grid: rgba(0, 0, 0, 0.05);
+}
+
+@layer base {
+  body {
+    @apply bg-[#FBFBFA] text-[#1A1A1A] font-sans antialiased;
+    background-image: 
+      linear-gradient(var(--color-blueprint-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-blueprint-grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+.blueprint-border {
+  @apply border border-black/10 relative;
+}
+
+.blueprint-border::before {
+  content: '';
+  @apply absolute -top-1 -left-1 w-2 h-2 border-t border-l border-black/30;
+}
+
+.blueprint-border::after {
+  content: '';
+  @apply absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-black/30;
+}
+
+.recurrent-loop {
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
